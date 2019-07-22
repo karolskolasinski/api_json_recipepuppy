@@ -17,7 +17,7 @@ public class Main {
         builder.loadParameters(puppyParameters);
 
         String requestURL = builder.compileURL();
-        System.out.println("your requested ULR is: " + requestURL);
+        System.out.println("your requested URL is: " + requestURL);
 
         JSONProcessing.przetwarzanieJSON(requestURL);
 
@@ -27,7 +27,7 @@ public class Main {
             scannerContentLoader.isInterestingRecipes(puppyParameters, requestURL);
             newBuilder.loadParameters(puppyParameters);
             String newRequestURL = newBuilder.compileURL();
-            System.out.println("your new requested ULR is: " + newRequestURL);
+            System.out.println("your new requested URL is: " + newRequestURL);
             JSONProcessing.przetwarzanieJSON(newRequestURL);
             if (JSONProcessing.isCloseURI()) {
                 czyPracowacDalej = false;
