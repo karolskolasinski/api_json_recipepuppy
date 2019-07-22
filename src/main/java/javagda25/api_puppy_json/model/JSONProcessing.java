@@ -13,9 +13,13 @@ import java.net.URISyntaxException;
 import java.net.URL;
 
 public class JSONProcessing {
+    private static boolean closeURI = false;
+
+    public static boolean isCloseURI() {
+        return closeURI;
+    }
 
     public static void openURI(int recipeNumber, String requestURL) {
-
         String content = JSONProcessing.loadContentFromURL(requestURL);
         Gson gson = new Gson();
         Recipes results = gson.fromJson(content, Recipes.class);
@@ -24,7 +28,7 @@ public class JSONProcessing {
                 if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
                     try {
                         Desktop.getDesktop().browse(new URI(results.getResults().get(i).getHref()));
-                        System.exit(0);
+                        closeURI = true;
                     } catch (IOException | URISyntaxException e) {
                         e.printStackTrace();
                     }

@@ -8,6 +8,7 @@ import javagda25.api_puppy_json.model.ScannerContentLoader;
 
 public class Main {
     public static void main(String[] args) {
+        boolean czyPracowacDalej = true;
         APIPupppyURLBuilder builder = new APIPupppyURLBuilder();
         PuppyParameters puppyParameters = new PuppyParameters();
         ScannerContentLoader scannerContentLoader = new ScannerContentLoader();
@@ -20,6 +21,7 @@ public class Main {
 
         JSONProcessing.przetwarzanieJSON(requestURL);
 
+
         do {
             APIPupppyURLBuilder newBuilder = new APIPupppyURLBuilder();
             scannerContentLoader.isInterestingRecipes(puppyParameters, requestURL);
@@ -27,6 +29,9 @@ public class Main {
             String newRequestURL = newBuilder.compileURL();
             System.out.println("your new requested ULR is: " + newRequestURL);
             JSONProcessing.przetwarzanieJSON(newRequestURL);
-        } while (true);
+            if (JSONProcessing.isCloseURI()) {
+                czyPracowacDalej = false;
+            }
+        } while (czyPracowacDalej);
     }
 }
