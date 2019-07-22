@@ -20,14 +20,13 @@ public class Main {
 
         JSONProcessing.przetwarzanieJSON(requestURL);
 
-        APIPupppyURLBuilder newBuilder = new APIPupppyURLBuilder();
-        scannerContentLoader.isInterestingRecipes(puppyParameters, requestURL);
-        newBuilder.loadParameters(puppyParameters);
-        String newRequestURL = newBuilder.compileURL();
-        System.out.println("your new requested ULR is: " + newRequestURL);
-        JSONProcessing.przetwarzanieJSON(newRequestURL);
-
+        do {
+            APIPupppyURLBuilder newBuilder = new APIPupppyURLBuilder();
+            scannerContentLoader.isInterestingRecipes(puppyParameters, requestURL);
+            newBuilder.loadParameters(puppyParameters);
+            String newRequestURL = newBuilder.compileURL();
+            System.out.println("your new requested ULR is: " + newRequestURL);
+            JSONProcessing.przetwarzanieJSON(newRequestURL);
+        } while (true);
     }
-
-
 }

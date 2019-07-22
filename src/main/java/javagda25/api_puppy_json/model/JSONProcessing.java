@@ -24,6 +24,7 @@ public class JSONProcessing {
                 if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
                     try {
                         Desktop.getDesktop().browse(new URI(results.getResults().get(i).getHref()));
+                        System.exit(0);
                     } catch (IOException | URISyntaxException e) {
                         e.printStackTrace();
                     }
@@ -44,8 +45,6 @@ public class JSONProcessing {
         for (int i = 0; i < results.getResults().size(); i++) {
             System.out.println(results.getResults().indexOf(results.getResults().get(i)) + 1 + ": " + results.getResults().get(i).getTitle());
         }
-
-
 
 
     }
