@@ -49,9 +49,8 @@ public class JSONProcessing {
         for (int i = 0; i < results.getResults().size(); i++) {
             System.out.println(results.getResults().indexOf(results.getResults().get(i)) + 1 + ": " + results.getResults().get(i).getTitle());
         }
-
-
     }
+
 
     /*przeczytanie z JSON ze strony*/
     public static String loadContentFromURL(String requestURL) {
